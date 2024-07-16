@@ -3,10 +3,11 @@
     "name": "First extension",
     "version": "0.0.1",
     "description": "My first extension",
-    "author": "aminworkm@gmail.com",
     "permissions": [
-        "storage"
-      ],
+        "storage",
+        "activeTab",
+        "tabs"
+        ],
     "icons": { 
         "16": "images/icon.png",
         "48": "images/icon.png",
