@@ -5,26 +5,42 @@ const goButtonElement = document.getElementById("goButton")
 let startIsValid = false 
 let endIsValid = false 
 
-async function getCurrentTab() {
+// Modeled from Youtube API docs 
+function getCurrentTab(callback) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        // since only one tab should be active and in the current window at once
-        // the return variable should only have one entry
         var activeTab = tabs[0];
-        var activeTabId = activeTab.url
-        console.log(activeTabId)
+        var activeTabUrl = activeTab.url;
+        console.log(activeTabUrl);
+        callback(activeTabUrl);
     });
+}
+
+// Taken from https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url 
+function youtube_parser(url){
+    var regExp = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]vi?=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+    var match = String(url).match(regExp);
+    return (match&&match[1].length==11)? match[1] : false;  //garanteed 11 characters in pos 1 of array 
 }
 
 goButtonElement.onclick = function() {
 
-    getCurrentTab(); 
+    getCurrentTab(function(currentUrl) {  // Callback needed since we have to get the url before
 
-    if (startDateElement.value && endDateElement.value) {
-        console.log("Start Date: ", startDateElement.value)
-        console.log("End Date: ", endDateElement.value)
-        console.log("Fetching data and outputting it")
-    }
-    else {
-        console.log("One or more dates are not valid")
-    }    
+        // Get the videoID wth the URL 
+        var videoID = youtube_parser(currentUrl)   
+        if (videoID === false) {
+            console.log("Invalid link (move to the youtube page then open this extension)")
+            return //TODO: Test this 
+        } 
+
+        // If the dates are actual values (not left blank)
+        if (startDateElement.value && endDateElement.value) {
+            // Check if the start and end date is some time between or equal to the published date and today, and that end date is after or the same day as start
+            console.log("Start Date: ", startDateElement.value);
+            console.log("End Date: ", endDateElement.value);
+            console.log("Fetching data and outputting it");
+        } else {
+            console.log("One or more dates are not valid");
+        }
+    });
 }
