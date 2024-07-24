@@ -5,6 +5,17 @@ const goButtonElement = document.getElementById("goButton")
 let startIsValid = false 
 let endIsValid = false 
 
+function getDateFromHtml() {
+    console.log(document.body);
+}
+  
+if (document.readyState !== "loading") {
+    getDateFromHtml();
+} else {
+    // Loading hasn't finished yet
+    document.addEventListener("DOMContentLoaded", getDateFromHtml);
+}
+
 // Modeled from Youtube API docs 
 function getCurrentTab(callback) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -23,7 +34,7 @@ function youtube_parser(url){
 }
 
 goButtonElement.onclick = function() {
-
+    
     getCurrentTab(function(currentUrl) {  // Callback needed since we have to get the url before
 
         // Get the videoID wth the URL 

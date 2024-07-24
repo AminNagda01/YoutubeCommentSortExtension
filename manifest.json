@@ -1,21 +1,24 @@
 {
     "manifest_version": 3,
-    "name": "First extension",
-    "version": "0.0.1",
-    "description": "My first extension",
-    "permissions": [
-        "storage",
+    "name": "Youtube Comment Date Search",
+    "version": "0.1.0",
+    "description": "Searches for youtube comments in a date range",
+    "permissions": [ 
         "activeTab",
-        "tabs"
+        "tabs",
+        "scripting"
         ],
     "icons": { 
         "16": "images/icon.png",
         "48": "images/icon.png",
         "128": "images/icon.png"
     },
+    "background": {
+        "service_worker": "background.js"
+    },
     "action": {
         "default_popup": "/popup/popup.html",
-        "default_title": "Chrome extension lole",
+        "default_title": "Youtube Comment Date Search",
         "default_icon": {
             "16": "images/icon.png",
             "48": "images/icon.png",

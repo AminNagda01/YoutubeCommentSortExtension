@@ -4,39 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youtube Comment Chrome Extentsion</title>
-    <link rel="stylesheet" href="bulma.min.css" />
-    <script src="popup.js" async></script>
+    <link rel="stylesheet" href="popup.css" />
 </head>
-<body>
-    
-    <div class="container is-fluid">
+<body class="hvr-fade">
 
-        <h1 class="title is-4">Youtube Comment Sorter</h1>
-    
 
-        <div class="field">
-            <label class="label">Start Date</label>
-            <div class="date">
-                <div class="control">
-                    <input type="date" id="startDate">
-                </div>
+    <h1 class="extensionTitle">Youtube Comment Sorter</h1>
+
+
+    <div class="field">
+        <label class="label">Start Date</label>
+        <div class="date">
+            <div class="control">
+                <input type="date" id="startDate">
             </div>
         </div>
-
-        <div class="field">
-            <label class="label">End Date</label>
-            <div class="date">
-                <div class="control">
-                    <input type="date" id="endDate">
-                </div>
-            </div>
-        </div>
-
-        <div class="field">
-            <label class="label">Pull Comments</label>
-            <button class="button is-success" id="goButton">Go</button>
-        </div>
-
     </div>
+
+    <div class="field">
+        <label class="label">End Date</label>
+        <div class="date">
+            <div class="control">
+                <input type="date" id="endDate">
+            </div>
+        </div>
+    </div>
+
+    <div class="executionButton">
+        <label class="label">Pull Comments</label>
+        <button class="button is-success" id="goButton">Go</button>
+    </div>
+
+    <script src="popup.js" async></script>
 </body>
 </html>
