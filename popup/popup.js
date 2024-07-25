@@ -89,25 +89,37 @@ goButtonElement.onclick = function() {
                     return
             }
             // if the year of end date is more recent than start, give error 
-            else if (parseInt(endDateArr[0]) > parseInt(startDateArr[0])) {
+            if (parseInt(endDateArr[0]) < parseInt(startDateArr[0])) {
                     errorMessageElement.textContent = "Invalid end date year entered"; 
                     errorMessageElement.classList.add('error');
                     console.log("Invalid year (end date)")
                     return
             }
             // If start year is current year, dont allow past current date and month 
-            else if (parseInt(startDateArr[0]) == todaysDate.getFullYear() ) {
-                if (parseInt(startDateArr[1]) > (todaysDate.getMonth() + 1) || 
-                    parseInt(startDateArr[2]) > todaysDate.getDate()) {
+            if (parseInt(startDateArr[0]) == todaysDate.getFullYear() ) {
+                if (parseInt(startDateArr[1]) > (todaysDate.getMonth() + 1)) {
                         errorMessageElement.textContent = "Invalid start date entered"; 
                         errorMessageElement.classList.add('error');
                         console.log("Invalid start date")
                         return
                 }       
+                if (parseInt(startDateArr[1]) == (todaysDate.getMonth() + 1) && 
+                    parseInt(startDateArr[2]) > todaysDate.getDate()) {
+                        errorMessageElement.textContent = "Invalid start date entered"; 
+                        errorMessageElement.classList.add('error');
+                        console.log("Invalid start date")
+                        return
+                }
             }
             // If end year is current year, dont allow past current date and month 
-            else if (parseInt(endDateArr[0]) == todaysDate.getFullYear() ) {
-                if (parseInt(endDateArr[1]) > (todaysDate.getMonth() + 1) || 
+            if (parseInt(endDateArr[0]) == todaysDate.getFullYear() ) {
+                if (parseInt(endDateArr[1]) > (todaysDate.getMonth() + 1)) {
+                        errorMessageElement.textContent = "Invalid end month entered"; 
+                        errorMessageElement.classList.add('error');
+                        console.log("Invalid end mo")
+                        return
+                }
+                if (parseInt(endDateArr[1]) == (todaysDate.getMonth() + 1) && 
                     parseInt(endDateArr[2]) > todaysDate.getDate()) {
                         errorMessageElement.textContent = "Invalid end date entered"; 
                         errorMessageElement.classList.add('error');
@@ -116,7 +128,7 @@ goButtonElement.onclick = function() {
                 }
             }
             // If the years are the same, do not allow end to come before start  
-            else if (parseInt(endDateArr[0]) == parseInt(startDateArr[0])) {
+            if (parseInt(endDateArr[0]) == parseInt(startDateArr[0])) {
                 //If end month is before start month 
                 if (parseInt(endDateArr[1]) < parseInt(startDateArr[1])) {
                     errorMessageElement.textContent = "Invalid end month entered"; 
@@ -134,10 +146,11 @@ goButtonElement.onclick = function() {
                    }
                 }
             }
-            else {
-                // API starto 
-                return 
-            }
+
+            //API Start 
+            console.log("Valid Date Woo"); //TODO: Make this a green loading bar in the error place that ends when txt file is done 
+            
+            return; 
 
         } else {
             errorMessageElement.textContent = "One or more dates are empty";
