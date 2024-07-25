@@ -5,8 +5,7 @@
     "description": "Searches for youtube comments in a date range",
     "permissions": [ 
         "activeTab",
-        "tabs",
-        "scripting"
+        "tabs"
         ],
     "icons": { 
         "16": "images/icon.png",
