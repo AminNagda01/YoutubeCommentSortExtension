@@ -1,9 +1,13 @@
 body {
     background-color: aliceblue;
     background-size: auto;
+    text-align: center;
 }
 /* Fade - Taken from https://github.com/IanLunn/Hover */
 .hvr-fade {
+    padding: 20px;
+    width:200px;
+    height:auto;
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
@@ -16,6 +20,65 @@ body {
     transition-property: color, background-color;
 }
 .hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active {
-    background-color: #2098D1;
+    background-color: #1f8080;
     color: white;
 }
+.field {
+    padding: 20px;
+    font-size: 25px;
+}
+.position-data {
+    vertical-align: top;
+}
+.labelButton {
+    font-weight: 700;
+    font-size: 18px;
+}
+/* from: https://getcssscan.com/css-buttons-examples (Button-6) */ 
+.buttonClick {
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.buttonClick:hover,
+.buttonClick:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.buttonClick:hover {
+  transform: translateY(-1px);
+}
+
+.buttonClick:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
