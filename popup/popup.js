@@ -149,7 +149,7 @@ goButtonElement.onclick = function() {
 
             //API Start 
             console.log("Valid Date Woo"); //TODO: Make this a green loading bar in the error place that ends when txt file is done 
-            
+            // Remember to JSON ify the data before sending it 
             return; 
 
         } else {
