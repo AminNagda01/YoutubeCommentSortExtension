@@ -5,7 +5,8 @@
     "description": "Searches for youtube comments in a date range",
     "permissions": [ 
         "activeTab",
-        "tabs"
+        "tabs",
+        "storage"
         ],
     "icons": { 
         "16": "images/icon.png",
@@ -15,6 +16,7 @@
     "background": {
         "service_worker": "background.js"
     },
+    "host_permissions": ["http://127.0.0.1:5000/*"],
     "action": {
         "default_popup": "/popup/popup.html",
         "default_title": "Youtube Comment Date Search",

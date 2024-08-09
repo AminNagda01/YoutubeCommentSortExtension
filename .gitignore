@@ -1,3 +1,5 @@
 notes.txt
 popup/bulma.min.css
-.env
+/websever/.env
+/websever/creds.py
+/websever/__pycache__
