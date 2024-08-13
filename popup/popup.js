@@ -174,10 +174,23 @@ goButtonElement.onclick = function() {
                     if (!response.ok) {
                     throw new Error('Network response was not ok');
                     }
-                    return response.json();
+                    return response.text();
                 })
-                .then(data => {
-                    console.log(data)
+                .then(textData => {
+                    const blob = new Blob([textData], { type: 'text/plain' });
+                    const url = URL.createObjectURL(blob);
+        
+                    chrome.downloads.download({
+                        url: url,
+                        filename: 'data.txt', // Specify the filename with .txt extension
+                        conflictAction: 'uniquify' // Handle filename conflicts
+                    }, (downloadId) => {
+                        if (chrome.runtime.lastError) {
+                            console.error('Download error:', chrome.runtime.lastError);
+                        } else {
+                            console.log('Download initiated with ID:', downloadId);
+                        }
+                    });
                 })
                 .catch(error => {
                     console.error('Error:', error);

@@ -6,7 +6,7 @@
     "permissions": [ 
         "activeTab",
         "tabs",
-        "storage"
+        "downloads"
         ],
     "icons": { 
         "16": "images/icon.png",

@@ -8,7 +8,7 @@ import googleapiclient.discovery
 # Function that takes the video ID And returns all info 
 def youtubeCaller(nextPageToken, **data):
     nextPageToken = nextPageToken
-    videoID = data["videoIdentification"]
+    videoID = data['videoIdentification']
 
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
@@ -80,13 +80,14 @@ def create_app():
         endMonth = int(end[5:7])
         endDay = int(end[8:10])
 
-        create_output(commentsList, comments) # inital call (add error check for no comments)  
+         
 
         # Start Date:  2024-01-12
         # End Date:  2024-04-12
 
         while True:
             if "nextPageToken" not in commentsList:
+                create_output(commentsList, comments) # inital call (add error check for no comments) 
                 break
             else:
                 lastDateInResponse = str(commentsList["items"][99]["snippet"]["topLevelComment"]["snippet"]['publishedAt']) # Ex: 2024-07-13T08:05:25Z
@@ -140,14 +141,13 @@ def create_app():
                         else: 
                             break
         
-        create_output(commentsList, comments)
-        
         return {"message": comments}, 200
     
     return app
 
 # TODO: 
 # While loop to get more than 100 comments > DONE 
+# Date implementation > DONE 
 # Either return the text or html file itself, or make changes in popup.js to do so 
 # Error handling (add response and abort and marshmellow schemas) 
 # Documentation (swagger OpenAPI and your own documentation)
@@ -164,3 +164,5 @@ def create_app():
 
 # Notes: 
     # to check if tag is in json object, do if "nextPageToken" not in commentsList:, not if commentsList["nextPageToken"] not in commentsList: (kinda obvious now lol)
+
+    # TRY DIFFERENT GOOGLE ACCOUNT/ CLEAR BROWSER HISTORY/ FRESH INSTALL OF EXTENSION 
